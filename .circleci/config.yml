@@ -4,21 +4,16 @@ jobs:
   dev-plan-apply:
     docker:
       - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
-    working_directory: /root/project/environments/dev-env/
     steps:
       - checkout
       - run:          
           name: terraform init & plan
           command: |
-            pwd && ls 
-      - run:          
-          name: terraform init & plan
-          command: |
-            pwd && ls && terraform init && terraform plan -out tfplan
+            cd environments/dev-env/ && terraform init && terraform plan -out tfplan
       - run:            
           name: terraform apply
           command: |
-            terraform apply -auto-approve tfplan            
+            cd environments/dev-env/ && terraform apply -auto-approve tfplan            
 
   prod-plan:
     docker:

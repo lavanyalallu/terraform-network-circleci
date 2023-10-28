@@ -2,7 +2,7 @@ variable "name" { default = "demo-dev" }
 variable "cidr" { default = "10.139.0.0/16" }
 
 module "network" {
-  source = "/modules/network.tf"
+  source = "/modules/network"
 
   name = "${var.name}"
   cidr = "${var.cidr}"

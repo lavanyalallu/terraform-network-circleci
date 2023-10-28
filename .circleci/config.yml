@@ -4,7 +4,7 @@ jobs:
   dev-plan-apply:
     docker:
       - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
-    working_directory: /environments/dev-env
+    working_directory: /root/environments/dev-env
     steps:
       - checkout
       - run:          

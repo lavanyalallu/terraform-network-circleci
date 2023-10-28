@@ -1,8 +1,8 @@
-variable "name" { default = "demo-dev" }
+variable "name" { default = "main" }
 variable "cidr" { default = "10.139.0.0/16" }
 
 module "network" {
-  source = "../modules/network"
+  source = "modules/network"
 
   name = "${var.name}"
   cidr = "${var.cidr}"

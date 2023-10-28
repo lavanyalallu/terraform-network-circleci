@@ -22,9 +22,9 @@ resource "aws_security_group" "allow" {
       cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags {
-    Name = "${var.name}"
-  }
+ # tags {
+   # Name = "${var.name}"
+ # }
 }
 
 output "vpc_id"   { value = "${aws_vpc.vpc.id}" }

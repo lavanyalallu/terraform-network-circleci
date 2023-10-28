@@ -10,3 +10,8 @@ module "network" {
 
 output "env"      { value = "${var.name}" }
 output "vpc_cidr" { value = "${module.network.vpc_cidr}" }
+
+provider "aws" {
+  alias  = "us-east-1"
+  region = "us-east-1"
+}

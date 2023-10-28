@@ -10,11 +10,11 @@ jobs:
       - run:          
           name: terraform init & plan
           command: |
-          terraform init && terraform plan -out tfplan
+            terraform init && terraform plan -out tfplan
       - run:            
           name: terraform apply
           command: |
-          terraform apply -auto-approve tfplan            
+            terraform apply -auto-approve tfplan            
 
   prod-plan:
     docker:

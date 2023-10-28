@@ -1,15 +1,10 @@
-variable "name" { default = "network" }
-variable "cidr" { }
-
 resource "aws_vpc" "vpc" {
   cidr_block           = "${var.cidr}"
   enable_dns_support   = true
   enable_dns_hostnames = true
-  name   = "lava-${var.name}"
-
-  #tags {
-    #Name = "${var.name}"
-  #}
+  tags = {
+    Name = "${var.env}-vpc"
+  }
 }
 
 resource "aws_security_group" "allow" {

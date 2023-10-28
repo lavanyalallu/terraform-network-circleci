@@ -42,7 +42,7 @@ jobs:
       - run:            
           name: terraform
           command: |
-            cd environments/prod-env/ && terraform apply -auto-approve
+            cd environments/prod-env/ && terraform apply -auto-approve tfplan
       - persist_to_workspace:
           root: .
           paths:
@@ -54,7 +54,10 @@ workflows:
     jobs:
       - dev-plan-apply
       - prod-plan
-      - prod-apply:
+      - hold-apply:
           type: approval     
           requires:
             - prod-plan
+      - prod-apply:
+          requires:
+            - hold-apply

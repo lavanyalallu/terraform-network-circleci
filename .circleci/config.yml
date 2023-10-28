@@ -9,6 +9,9 @@ jobs:
       - checkout
       - run:
           name: change directory
+          command: pwd
+      - run:
+          name: change directory
           command: cd environments/dev-env/
       - run:          
           name: terraform init & plan

@@ -9,11 +9,11 @@ jobs:
       - run:          
           name: terraform init & plan
           command: |
-            cd environments/dev-env/ && terraform init && terraform plan -out tfplan
+            terraform init && terraform plan -out tfplan
       - run:            
           name: terraform apply
           command: |
-            cd environments/dev-env/ && terraform apply -auto-approve tfplan            
+            terraform apply -auto-approve tfplan            
       - persist_to_workspace:
           root: .
           paths:

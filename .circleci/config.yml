@@ -10,6 +10,8 @@ jobs:
       - run:
           name: change directory
           command: pwd
+          name: change directory
+          command: ls          
       - run:
           name: change directory
           command: cd environments/dev-env/

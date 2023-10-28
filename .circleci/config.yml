@@ -2,46 +2,32 @@ version: 2
 
 jobs:
   dev-plan-apply:
-    # working_directory: /terraform-circle-ci-s3
     docker:
       - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
     steps:
       - checkout
-      - run:
-          name: change directory
-          command: pwd
-      - run:
-          name: change directory
-          command: ls          
-      - run:
-          name: change directory
-          command: cd environments/dev-env/
       - run:          
           name: terraform init & plan
           command: |
-            terraform init && terraform plan -out tfplan
+            cd environments/dev-env/ && terraform init && terraform plan -out tfplan
       - run:            
           name: terraform apply
           command: |
-            terraform apply -auto-approve tfplan            
+            cd environments/dev-env/ && terraform apply -auto-approve tfplan            
       - persist_to_workspace:
           root: .
           paths:
             - .
 
   prod-plan:
-    working_directory: /terraform-circle-ci-s3
     docker:
       - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
     steps:
       - checkout
-      - run:
-          name: change directory
-          command: cd environments/prod-env/
       - run:          
           name: terraform init & plan
           command: |
-            terraform init && terraform plan -out tfplan           
+            cd environments/prod-env/ && terraform init && terraform plan -out tfplan           
       - persist_to_workspace:
           root: .
           paths:
@@ -52,14 +38,11 @@ jobs:
       - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
     steps:
       - attach_workspace:
-          at: .
-      - run:
-          name: change directory
-          command: cd environments/prod-env/  
+          at: . 
       - run:            
           name: terraform
           command: |
-            terraform apply -auto-approve tfplan
+            cd environments/prod-env/ && terraform apply -auto-approve tfplan
       - persist_to_workspace:
           root: .
           paths:

@@ -39,10 +39,7 @@ jobs:
           name: terraform
           command: |
             cd environments/prod-env/ && terraform apply -auto-approve tfplan
-      - persist_to_workspace:
-          root: .
-          paths:
-            - environments/prod-env
+
 
 workflows:
   version: 2

@@ -6,9 +6,9 @@ resource "aws_vpc" "vpc" {
   enable_dns_support   = true
   enable_dns_hostnames = true
 
-  tags {
-    Name = "${var.name}"
-  }
+  #tags {
+    #Name = "${var.name}"
+  #}
 }
 
 resource "aws_security_group" "allow" {

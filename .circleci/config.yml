@@ -2,7 +2,7 @@ version: 2
 
 jobs:
   dev-plan-apply:
-    working_directory: /terraform-circle-ci-s3
+    # working_directory: /terraform-circle-ci-s3
     docker:
       - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
     steps:

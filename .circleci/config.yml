@@ -10,6 +10,10 @@ jobs:
       - run:          
           name: terraform init & plan
           command: |
+            pwd && ls 
+      - run:          
+          name: terraform init & plan
+          command: |
             terraform init && terraform plan -out tfplan
       - run:            
           name: terraform apply

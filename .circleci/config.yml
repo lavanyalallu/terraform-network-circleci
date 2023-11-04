@@ -43,7 +43,7 @@ jobs:
 
 workflows:
   version: 2
-  plan_approve_apply:
+  pull_request:
     jobs:
       - dev-plan-apply
       - prod-plan

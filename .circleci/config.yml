@@ -43,14 +43,22 @@ jobs:
 
 workflows:
   version: 2
-  pull_request:
+  plan_approve_apply:
     jobs:
-      - dev-plan-apply
-      - prod-plan
+      - dev-plan-apply:
+          filters:
+            branches:
+              only:
+                - dev        
+      - prod-plan:
+          filters:
+            branches:
+              only:
+                - main      
       - hold-apply:
           type: approval     
           requires:
             - prod-plan
       - prod-apply:
           requires:
-            - hold-apply
+            - hold-apply           

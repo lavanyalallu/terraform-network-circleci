@@ -45,7 +45,11 @@ workflows:
   version: 2
   plan_approve_apply:
     jobs:
-      - dev-plan-apply
+      - dev-plan-apply:
+          filters:
+            branches:
+              only:
+                - dev  
       - prod-plan:
           filters:
             branches:

@@ -49,12 +49,12 @@ workflows:
           filters:
             branches:
               only:
-                - dev  
+                - dev        
       - prod-plan:
           filters:
             branches:
               only:
-                - main
+                - main      
       - hold-apply:
           type: approval     
           requires:

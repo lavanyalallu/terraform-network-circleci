@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  dev-plan-apply:
+  dev-plan:
     docker:
       - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
     steps:

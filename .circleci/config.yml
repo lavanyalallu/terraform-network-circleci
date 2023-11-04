@@ -22,7 +22,7 @@ jobs:
       - attach_workspace:
           at: . 
       - run:            
-          name: terraform apply
+          name: terraform 
           command: |
             cd environments/dev-env/ && terraform apply -auto-approve tfplan            
 
@@ -68,10 +68,8 @@ workflows:
           requires:
             - dev-plan                  
       - dev-apply:
-          filters:
-            branches:
-              only:
-                - dev        
+          requires:
+            - hold-apply        
       - prod-plan:
           filters:
             branches:

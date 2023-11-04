@@ -61,13 +61,13 @@ workflows:
             branches:
               only:
                 - dev   
-      - dev-apply:
+      - hold-dev-apply:
           type: approval     
           requires:
             - dev-plan                  
       - dev-apply:
           requires:
-            - dev-apply        
+            - hold-dev-apply        
       - prod-plan:
           filters:
             branches:
